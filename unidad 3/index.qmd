@@ -1,0 +1,16 @@
+---
+title: "Unidad 3"
+---
+# Contenido
+
+[Material](01-deep-learning.ipynb)
+
+[Ejemplo de modelo CLIP](CLIP.ipynb)
+
+# Actividades
+
+[Actividad 3A](tareas/Practica 3A.ipynb)
+
+# Archivos
+
+[datos-3A.zip](tareas/datos-3A.zip)

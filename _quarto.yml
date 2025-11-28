@@ -1,0 +1,30 @@
+project:
+  type: website
+
+website:
+  title: "MyPI"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - href: unidad 1/index.qmd
+        text: Unidad 1
+      - href: unidad 2/index.qmd
+        text: Unidad 2
+      - href: unidad 3/index.qmd
+        text: Unidad 3
+      - href: unidad 4/index.qmd
+        text: Unidad 4
+      - href: unidad 5/index.qmd
+        text: Unidad 5      
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

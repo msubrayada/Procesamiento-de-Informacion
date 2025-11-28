@@ -1,0 +1,22 @@
+---
+title: "Unidad 4"
+---
+# Contenido
+
+[Material](01-encajes-vectoriales.ipynb)
+
+[Ejemplo de modelos de lenguaje](Modelos de Lenguaje.ipynb)
+
+# Actividades
+
+[Actividad 4A](tareas/01-plagio.ipynb)
+
+[Actividad 4B](tareas/02-similaridad.ipynb)
+
+# Archivos
+
+[archivo_emojis_Elfinanciero.csv](tareas/archivo_emojis_Elfinanciero.csv)
+
+[source-documents.zip](tareas/source-documents.zip)
+
+[suspicious-documents.zip](tareas/suspicious-documents.zip)

@@ -1,0 +1,34 @@
+---
+title: "Unidad 1"
+---
+# Contenido
+
+[Material](01-teoria de la informacion.ipynb)
+
+[Ejemplo](ejemplos.ipynb)
+
+# Actividades
+
+[Actividad 1A](tareas/1A count_char.ipynb)
+
+[Actividad 1B](tareas/1B count_word.ipynb)
+
+[Actividad 1C](tareas/1C entropy.ipynb)
+
+[Actividad 1D](tareas/1D Mutual_information.ipynb)
+
+# Archivos
+
+[text_1.txt](tareas/text_1.txt)
+
+[text_2.txt](tareas/text_2.txt)
+
+[text_3.txt](tareas/text_3.txt)
+
+[text_4.txt](tareas/text_4.txt)
+
+[text_5.txt](tareas/text_5.txt)
+
+[libro_1.txt](tareas/libro_1.txt)
+
+[libro_2.txt](tareas/libro_2.txt)

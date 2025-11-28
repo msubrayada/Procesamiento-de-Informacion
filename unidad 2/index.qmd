@@ -1,0 +1,25 @@
+---
+title: "Unidad 2"
+---
+# Contenido
+
+[Material](01-preprocesado.ipynb)
+
+[Ejemplo kmeans](ejemplo 01-kmeans.ipynb)
+
+[Ejemplo DBSCAN](ejemplo 02-dbscan.ipynb)
+
+[Ejemplo Evaluación](ejemplo 03-eval.ipynb)
+
+[Ejemplo PCA](ejemplo 04-pca.ipynb)
+
+# Actividades
+
+[Actividad 2A](tareas/01-kmeans-elbow.ipynb)
+
+[Actividad 2B](tareas/02-pca.ipynb)
+
+# Archivos
+
+[kmeans-elbow.npy](tareas/kmeans-elbow.npy)
+

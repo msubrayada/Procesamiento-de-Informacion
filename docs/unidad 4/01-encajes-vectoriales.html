@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.23">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Guillermo Ruiz">
+
+<title>Obtención de encajes vectoriales – MyPI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bb5f9278568ae542f8467bdb635b70ac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">MyPI</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../unidad 1/index.html"> 
+<span class="menu-text">Unidad 1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../unidad 2/index.html"> 
+<span class="menu-text">Unidad 2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../unidad 3/index.html"> 
+<span class="menu-text">Unidad 3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../unidad 4/index.html"> 
+<span class="menu-text">Unidad 4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../unidad 5/index.html"> 
+<span class="menu-text">Unidad 5</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#modelo-de-espacio-vectorial" id="toc-modelo-de-espacio-vectorial" class="nav-link active" data-scroll-target="#modelo-de-espacio-vectorial">Modelo de espacio vectorial</a></li>
+  <li><a href="#medidas-de-similitud" id="toc-medidas-de-similitud" class="nav-link" data-scroll-target="#medidas-de-similitud">Medidas de similitud</a>
+  <ul class="collapse">
+  <li><a href="#jaccard" id="toc-jaccard" class="nav-link" data-scroll-target="#jaccard">Jaccard</a></li>
+  <li><a href="#dice" id="toc-dice" class="nav-link" data-scroll-target="#dice">Dice</a></li>
+  <li><a href="#coseno" id="toc-coseno" class="nav-link" data-scroll-target="#coseno">Coseno</a></li>
+  </ul></li>
+  <li><a href="#el-problema-de-los-vecinos-cercanos" id="toc-el-problema-de-los-vecinos-cercanos" class="nav-link" data-scroll-target="#el-problema-de-los-vecinos-cercanos">El problema de los vecinos cercanos</a>
+  <ul class="collapse">
+  <li><a href="#aplicaciones" id="toc-aplicaciones" class="nav-link" data-scroll-target="#aplicaciones">Aplicaciones</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Obtención de encajes vectoriales</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Guillermo Ruiz </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Como vimos en la unidad anterior, los modelos como BERT o CLIP se pueden usar para transformar texto o imágenes en vectores. Existen otras maneras de obtener los encajes de un texto, por ejemplo la que se muestra a continuación.</p>
+<section id="modelo-de-espacio-vectorial" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-espacio-vectorial">Modelo de espacio vectorial</h2>
+<p>La representación de objetos en forma de vectores ha sido muy favorecida y usada en el área de recuperación de información. Los motores de búsqueda actuales como Google, Bing, Yahoo, etc. usan este modelo como representación de datos para comparar la consulta que hace el usuario (documento de consulta) contra todos los documentos que tienen en su base de conocimiento (documentos de la web indexados). De esta manera, cada documento es representado como un vector. Para encontrar los documentos más relevantes dentro de la colección total de documentos, <span class="math inline">\(D\)</span>, con respecto al documento consulta, <span class="math inline">\(q\)</span>, se calcula las similitudes (usualmente la similitud coseno) de <span class="math inline">\(q\)</span> contra el conjunto de documentos <span class="math inline">\(D\)</span>, los más similares a <span class="math inline">\(q\)</span> son los documentos que se muestran al usuario. Este es el principio básico de un motor de búsqueda.</p>
+<p>Con la representación de los documentos como vectores, podemos usar las propiedades matemáticas de estos espacios, por ejemplo, la similitud entre dos vectores dado el ángulo entre ellos, lo cual se calcula con la similitud coseno.</p>
+<p>La similitud entre dos objetos, considerados como vectores, está determinada por qué tanto se parecen respecto a las características que los definen, en este caso, cada dimensión del vector define una característica. En forma vectorial, generalmente, se ordenan las palabras considerando el orden léxico como cada una de las dimensiones del vector (cada dimensión representa una característica, es decir, una palabra del vocabulario). Si tenemos los documentos de tipo cadena:</p>
+<p><span class="math inline">\(d_1\)</span> = “anita lava la tina, la lava, la lava”,</p>
+<p><span class="math inline">\(d_2\)</span> = “anita lava la ropa”,</p>
+<p>y hacemos un tokenizado a nivel de unigramas (palabras como cada una de sus características) tenemos a cada objeto representado por los siguientes términos o tokens:</p>
+<p><span class="math inline">\(x = \{anita, lava, la, tina, la, lava, la, lava\}\)</span></p>
+<p><span class="math inline">\(y = \{anita, lava, la, ropa\}\)</span></p>
+<p>Para realizar la representación vectorial, se ordenan los términos únicos de todo el vocabulario, considerando un orden, por ejemplo, el orden léxico como cada una de las dimensiones del vector (cada dimensión representa una característica, es decir, una palabra del vocabulario). Asumiendo que el vocabulario único es el conformado por los únicos dos objetos <span class="math inline">\(d_1\)</span> y <span class="math inline">\(d_2\)</span>, este queda:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>Palabra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>anita</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>la</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>lava</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>ropa</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>tina</td>
+</tr>
+</tbody>
+</table>
+<p>Los vectores para los objetos quedarían definidos como <span class="math inline">\(x =(1,3,3,0,1)\)</span> y <span class="math inline">\(y =(1,1,1,1,0)\)</span>. En este caso se contaron las frecuencias de los términos que aparecieron en el texto, a esto se le conoce como <strong>Term Frecuency</strong>, <strong>TF</strong>. Esta forma vectorial es conveniente cuando las componentes no son binarias, puesto que algunas características del objeto (componentes) son más relevantes que otras, y se pueden usar diferentes tipos de pesado para cada característica como la frecuencia del término (TF) o la combinación de la frecuencia del término y la frecuencia inversa del documento, (TF-IDF) que le da más importancia a las características distintivas de los documentos.</p>
+<p>La medida coseno es comúnmente usada con vectores donde sus componentes contienen valores reales que definen diferentes ponderaciones de las características que definen al objeto. Ésta es usada principalmente para comparar objetos durante los procesos de agrupamiento o clasificación de datos.</p>
+<p>A continuación se presenta cómo se puede convertir una colección de documentos a vectores.</p>
+<div id="b12bdba9-f66d-4d52-8f37-cea8c4cf941f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6baf590d-5048-411b-a751-6f6fc5269fd2" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> [<span class="st">"anita lava la tina la lava la lava"</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"anita lava la ropa"</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tokens <span class="op">=</span> [d.split() <span class="cf">for</span> d <span class="kw">in</span> D]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>tokens <span class="op">=</span> [<span class="bu">str</span>(x) <span class="cf">for</span> x <span class="kw">in</span> np.concatenate(tokens)]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="bu">list</span>(<span class="bu">set</span>(tokens))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>V2id <span class="op">=</span> {}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(V):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    V2id[v] <span class="op">=</span> i</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Documentos:"</span>, D)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Vocabulario:"</span>, <span class="bu">list</span>(<span class="bu">enumerate</span>(V)))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> D:</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Documento:"</span>, d)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Pasado a vectores es:"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> np.zeros(<span class="bu">len</span>(V))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> w <span class="kw">in</span> d.split():</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        w_id <span class="op">=</span> V2id[w]</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        v[w_id] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Documentos: ['anita lava la tina la lava la lava', 'anita lava la ropa']
+Vocabulario: [(0, 'la'), (1, 'tina'), (2, 'lava'), (3, 'ropa'), (4, 'anita')]
+
+Documento: anita lava la tina la lava la lava
+Pasado a vectores es:
+[3. 1. 3. 0. 1.]
+
+Documento: anita lava la ropa
+Pasado a vectores es:
+[1. 0. 1. 1. 1.]</code></pre>
+</div>
+</div>
+</section>
+<section id="medidas-de-similitud" class="level2">
+<h2 class="anchored" data-anchor-id="medidas-de-similitud">Medidas de similitud</h2>
+<p>En muchas ocasiones queremos medir qué tan iguales o diferentes son las cosas. No hay una definición formal para determinar el parecido de dos objetos pues depende del problema. No es lo mismo comparar dos vectores a comparar imágenes o textos. Podemos definir una función distancia que nos indique de manera precisa qué tan diferentes son dos objetos.</p>
+<p>Dos medidas de distancia como la distancia <strong>euclidiana</strong> (norma L2) y la distancia de <strong>Manhattan</strong> (norma L1) se usan, por ejemplo, en agrupaciones de objetos, considerando una representación de sus características como vectores. Su definición es la siguiente,</p>
+<p><span class="math display">\[ L_1(x,y) = \sum_{i=1}^n |x_i-y_i| \]</span></p>
+<p><span class="math display">\[ L_2(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2} \]</span></p>
+<p>A continuación, discutiremos tres medidas de similitud provenientes del área de recuperación de información</p>
+<section id="jaccard" class="level3">
+<h3 class="anchored" data-anchor-id="jaccard">Jaccard</h3>
+<p>La medida de similitud de <strong>Jaccard</strong>, también conocida como coeficiente de Jaccard. Hay dos versiones, la primera que considera vectores binarios de características (está presente la propiedad o no lo está) y su versión de pesos asociados a cada una de las características.</p>
+<p><span class="math display">\[ Jaccard(X,Y) = \frac{|X\cap Y|}{|X\cup Y|}\]</span></p>
+<p>Donde <span class="math inline">\(|X|\)</span> representa la cardinalidad del conjunto <span class="math inline">\(X\)</span>. Por ejemplo, considerando vectores binarios (presencia o ausencia), para este caso también se pueden considerar como conjuntos puesto que solo está presente la característica o no lo está. Si tenemos los objetos de tipo cadena</p>
+<p>$x = $ anita lava la tina</p>
+<p>$y = $ anita lava la ropa</p>
+<p>y hacemos un tokenizado a nivel de unigramas (palabras como cada una de sus características) tenemos <span class="math inline">\(X = {anita, lava, la, tina}\)</span> y <span class="math inline">\(Y = {anita, lava, la, ropa}\)</span>. La similitud entre los objetos X e Y usando la similitud de Jaccard sería 0.6. Esta medida de similitud toma valores entre 0 y 1. Un valor de 1 es la máxima similitud y 0 total disimilitud.</p>
+</section>
+<section id="dice" class="level3">
+<h3 class="anchored" data-anchor-id="dice">Dice</h3>
+<p>Otra medida de similitud, es la similitud <strong>Dice</strong>, también conocida como coeficiente de Dice, al igual que Jaccard es popular para vectores binarios (presencia o ausencia de características), o en su forma de conjuntos. Esta medida de similitud toma valores entre 0 y 1. Un valor de 1 es la máxima similitud y 0 total disimilitud.</p>
+<p><span class="math display">\[ Dice(X, Y) = 2\frac{|X\cap Y|}{|X|+|Y|}\]</span></p>
+<p><span class="math display">\[ Dice_w(x, y) = 2\frac{\sum_{i=1}^N \min(x_i, y_i)}{\sum_{i=1}^N(x_i+y_i)} \]</span></p>
+<p>Jaccard penaliza más que Dice cuando hay pocas entradas que se comparten.</p>
+</section>
+<section id="coseno" class="level3">
+<h3 class="anchored" data-anchor-id="coseno">Coseno</h3>
+<p>Otra medida muy usada es la similitud <strong>coseno</strong> que vimos en la unidad anterior. Es muy útil en los motores de búsqueda de documentos como Google y en general en el área de recuperación de información. Su expresión es:</p>
+<p><span class="math display">\[Coseno(x, y) = \frac{x\cdot y}{|x||y|}\]</span></p>
+<p>mide el coseno del ángulo entre los dos vectores. Si el ángulo entre los vectores es cero, el coseno da 1 indicando una máxima similitud.</p>
+<p>*Nota en el caso de la representación de los objetos como vectores, las componentes son el vocabulario único. Es decir, si las palabras únicas en el conjunto de datos son 1000, los vectores que se representan para este conjunto de datos serán de 1000 dimensiones.</p>
+<p>Algunas técnicas para reducir el vocabulario (y la dimensión de los vectores) son: convertir a minúsculas todas las palabras, borrar acentos, quitar stopwords, y aplicar técnicas de <strong>stemming</strong> o <strong>lematización</strong>. Por ejemplo, en el proceso de lematización se reduce a la forma canónica la palabra, por ejemplo, para las palabras <em>rojo, rojos, roja, rojas</em> si se aplica la lematización se obtendría <em>rojo</em>, el representante de todas ellas: adjetivo singular masculino, en el caso de los adjetivos; o aplicar el proceso de stemming, esto es, remover las flexiones finales de las palabras y obtener una raíz representante (<em>stem</em>), por ejemplo, si se aplica stemming al conjunto de las palabras anteriores se obtendría la raíz <em>roj</em>.</p>
+</section>
+</section>
+<section id="el-problema-de-los-vecinos-cercanos" class="level2">
+<h2 class="anchored" data-anchor-id="el-problema-de-los-vecinos-cercanos">El problema de los vecinos cercanos</h2>
+<p>El problema de los vecinos cercanos tiene muchas aplicaciones y proviene del área de recuperación de información. Se tiene una base de datos <span class="math inline">\(S\)</span> que es un subconjunto finito de un espacio <span class="math inline">\(U\)</span> y éste tiene asociada una función distancia <span class="math inline">\(d\)</span> (<span class="math inline">\((U, d)\)</span> se llama espacio métrico). La función <span class="math inline">\(d\)</span> que va de <span class="math inline">\(U\times U\)</span> a los números reales cumple con las propiedades:</p>
+<ol type="1">
+<li><span class="math inline">\(d(x,x)=0\)</span> para toda <span class="math inline">\(x\)</span> en <span class="math inline">\(U\)</span></li>
+<li><span class="math inline">\(d(x,y)=d(y,x)\)</span> para todas <span class="math inline">\(x,y\)</span> en <span class="math inline">\(U\)</span></li>
+<li><span class="math inline">\(d(x,y) + d(y,z) &gt;= d(x,z)\)</span> para todas <span class="math inline">\(x,y,z\)</span> en <span class="math inline">\(U\)</span> (desigualdad del triángulo)</li>
+</ol>
+<p>La bola con centro en <span class="math inline">\(x\)</span> y radio <span class="math inline">\(r\)</span> se define como <span class="math inline">\(B(x, r) = \{z\in S|d(x,z)\le r\}\)</span> El problema tiene dos variantes, una es dada una consulta <span class="math inline">\(q\)</span>, y un radio <span class="math inline">\(r\)</span>, encotrar <span class="math inline">\(B(q, r)\)</span> y la otra, dada <span class="math inline">\(q\)</span> y un número entero <span class="math inline">\(k\)</span>, encontrar los <span class="math inline">\(k\)</span> elementos de <span class="math inline">\(S\)</span> más cercanos a <span class="math inline">\(q\)</span>. Esta última, llamada los <span class="math inline">\(k\)</span> vecinos cercanos, será en la que nos enfoquemos.</p>
+<p>El problemas de los <span class="math inline">\(k\)</span> vecinos cercanos se puede resolver de manera trivial revisando todos los elementos de <span class="math inline">\(S\)</span> y guardando los <span class="math inline">\(k\)</span> más cercanos. A esta solución se le llama búsqueda secuencial. La búsqueda secuencial es suficiente cuando <span class="math inline">\(S\)</span> no es muy grande y cuando <span class="math inline">\(d\)</span> es una función simple. Si <span class="math inline">\(S\)</span> es de unos 100,000 elementos o más, la búsqueda secuencial puede ser muy lenta. Como una alternativa, en recuperación de información se usan técnicas como los pivotes, índices invertidos, tablas hash, cuantificación y grafos monotónicos entre otros.</p>
+<section id="aplicaciones" class="level3">
+<h3 class="anchored" data-anchor-id="aplicaciones">Aplicaciones</h3>
+<p>Entre las aplicaciones está la búsqueda por contenido. Suponga que se tiene una colección grande de documentos y se quiere hacer un sistema que permita al usuario escribir una pequeña consulta y que regrese los documentos de la colección que estén más relacionados a esa consulta. Entonce <span class="math inline">\(S\)</span> podría ser el conjunto de encajes obtenidos a partir de la colección de documentos. Los encajes pueden obtenerse usando técnicas como las TF, TF/IDF o algún modelo como BERT o CLIP. Entonces, de la consulta <span class="math inline">\(q\)</span> del usuario se obtiene su encaje (de la misma manera que la colección completa) y se buscan los <span class="math inline">\(k\)</span> vecinos cercanos de <span class="math inline">\(q\)</span> que serán los encajes correspondientes a los documentos más parecidos a <span class="math inline">\(q\)</span>.</p>
+<p>Una variante de este problema es la detección de plagio, donde se tiene la colección de documentos de donde l@s estudiantes pudieron sacar sus tareas. Luego las tareas se convierten en encajes y se buscan los más cercanos. Una persona revisa las tareas con los documentos más cercanos para determinar si hubo plagio o no.</p>
+<p>Como lo vimos en la unidad 3, otra de las aplicaciones es la de clasificación y en particular la de análisis de sentimiento. Es común que las redes sociales tengan mensajes de una gran variedad de temas. Saber el sentimiento de las respuestas de un tweet puede ser muy importante para monitorear las reacciones de los seguidores de un movimiento, persona o empresa. El análisis de sentimiento puede ser simple, con categorías como positivo, neutral y negativo, o complejo donde se incluyan enojo, miedo, alegría, tristeza o desagrado. Cuando los mensajes se convierten a vectores en un espacio, se pueden usar técnicas de aprendizaje máquina como Árboles de decisión, Regresión Logística, Máquinas de Soporte Vectorial u otras para clasificar.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

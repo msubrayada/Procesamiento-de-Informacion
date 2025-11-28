@@ -1,0 +1,19 @@
+---
+title: "Unidad 5"
+---
+# Contenido
+
+[Material](01-clasificacion.ipynb)
+
+[Ejemplo de clasificación](Ejemplo clasificacion.ipynb)
+
+# Actividades
+
+[Actividad 5A](tareas/01-clasificacion.ipynb)
+
+# Archivos
+
+[emojis_train.csv](tareas/emojis_train.csv)
+
+[emojis_test.csv](tareas/emojis_test.csv)
+

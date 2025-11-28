@@ -1,0 +1,5 @@
+---
+title: "Manejo y Procesamiento de la Información"
+---
+
+Este es el sitio de la materia de Manejo y procesamiento de la información.
