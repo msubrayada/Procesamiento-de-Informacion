@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Guillermo Ruiz">
 
-<title>Unidad 1 – MyPI</title>
+<title>Práctica 5A. Clasificación de texto – MyPI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bb5f9278568ae542f8467bdb635b70ac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-bb5f9278568ae542f8467bdb635b70ac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,9 +68,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -79,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyPI</span>
     </a>
   </div>
@@ -90,27 +94,27 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../unidad 1/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../unidad 1/index.html"> 
 <span class="menu-text">Unidad 1</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../unidad 2/index.html"> 
+    <a class="nav-link" href="../../unidad 2/index.html"> 
 <span class="menu-text">Unidad 2</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../unidad 3/index.html"> 
+    <a class="nav-link" href="../../unidad 3/index.html"> 
 <span class="menu-text">Unidad 3</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../unidad 4/index.html"> 
+    <a class="nav-link" href="../../unidad 4/index.html"> 
 <span class="menu-text">Unidad 4</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../unidad 5/index.html"> 
+    <a class="nav-link" href="../../unidad 5/index.html"> 
 <span class="menu-text">Unidad 5</span></a>
   </li>  
 </ul>
@@ -124,29 +128,27 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#contenido" id="toc-contenido" class="nav-link active" data-scroll-target="#contenido">Contenido</a></li>
-  <li><a href="#actividades" id="toc-actividades" class="nav-link" data-scroll-target="#actividades">Actividades</a></li>
-  <li><a href="#archivos" id="toc-archivos" class="nav-link" data-scroll-target="#archivos">Archivos</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unidad 1</h1>
+<h1 class="title">Práctica 5A. Clasificación de texto</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Guillermo Ruiz </p>
+          </div>
+  </div>
     
   
     
@@ -157,32 +159,50 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="contenido" class="level1">
-<h1>Contenido</h1>
-<p><a href="../unidad 1/01-teoria de la informacion.html">Material</a></p>
-<p><a href="https://www.youtube.com/watch?v=2KeNRlDTAfY">Video introductorio de Colab</a></p>
-<p><a href="https://www.youtube.com/watch?v=ARxoDi0moEI">Video de ejemplos básicos</a></p>
-<p><a href="../unidad 1/ejemplos.html">Notebook de ejemplos básicos</a></p>
-</section>
-<section id="actividades" class="level1">
-<h1>Actividades</h1>
-<p><a href="../unidad 1/tareas/1A count_char.html">Actividad 1A</a></p>
-<p><a href="../unidad 1/tareas/1B count_word.html">Actividad 1B</a></p>
-<p><a href="../unidad 1/tareas/1C entropy.html">Actividad 1C</a></p>
-<p><a href="../unidad 1/tareas/1D Mutual_information.html">Actividad 1D</a></p>
-</section>
-<section id="archivos" class="level1">
-<h1>Archivos</h1>
-<p><a href="tareas/text_1.txt">text_1.txt</a></p>
-<p><a href="tareas/text_2.txt">text_2.txt</a></p>
-<p><a href="tareas/text_3.txt">text_3.txt</a></p>
-<p><a href="tareas/text_4.txt">text_4.txt</a></p>
-<p><a href="tareas/text_5.txt">text_5.txt</a></p>
-<p><a href="tareas/libro_1.txt">libro_1.txt</a></p>
-<p><a href="tareas/libro_2.txt">libro_2.txt</a></p>
+<p>Entrena un modelo para predecir el emoticón que corresponde al texto. Los textos están en un archivo <code>.csv</code> con el texto y la clase. Algunos ejemplos son:</p>
+<ul>
+<li>(“Mi mamá si jala a fumar porro conmigo, pero no tenemos. _EMO”,😭)</li>
+<li>(¡Esperen! No me eliminen 🤗 Puedo explicarlo todo. _EMO️ _URL,❤)</li>
+<li>(Hacia tiempo que no hablaba tan bonito con Alejandra_EMO,🥺)</li>
+</ul>
+<ol type="1">
+<li>Debe preprocesar los datos, convertirlos a vectores, entrenar un modelo y evaluar su desempeño. Hay un archivo para entrenamiento y otro para prueba. Los archivos son:</li>
+</ol>
+<ul>
+<li>emojis_train.csv</li>
+<li>emojis_test.csv</li>
+</ul>
+<p>Las clases son [‘❤’, ‘😊’, ‘😭’, ‘🥺’] que indican la emoción del tweet. Una vez entrenado cada modelo, predecir los datos para el conjunto prueba que se proporciona.</p>
+<ol start="2" type="1">
+<li><p>Entrega un notebook que contenga el código de la creación de los modelos, así como la evaluación de sus mejores modelos. La evaluación debe incluir</p>
+<ul>
+<li>Mostrar la matriz de confusión.</li>
+<li>Calcular la precisión, recall, F-score para macro y micro</li>
+<li>Comparar los resultados de cada configuración.</li>
+</ul></li>
+</ol>
+<p>Se sugiere usar las métricas de sklearn</p>
+<pre><code>from sklearn.metrics import classification_report
+print(classification_report(y_gold, y_predict))</code></pre>
+<p>Consultar <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html">esta página</a></p>
+<ol start="3" type="1">
+<li>Para obtener la matriz de confusión podemos usar la función de sklearn. Las columnas y filas están asociadas a las etiquetas que se indican y es una matriz de NxN, en el ejemplo son 4 clases.</li>
+</ol>
+<pre><code>from sklearn.metrics import ConfusionMatrixDisplay
+_ = ConfusionMatrixDisplay.from_predictions(y_test, svc_predict)</code></pre>
+<p>que da como salida:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="01-clasificacion_files/figure-html/f7342910-a825-4d1e-ad28-350462ca85a7-1-72f60997-2ff9-4c09-be27-c744bf80fc34.png" class="img-fluid figure-img"></p>
+<figcaption>image.png</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li><p>Probar diferentes combinaciones de pre procesamiento, vectorización y modelos de aprendizaje para construir el mejor modelo de predicción.</p></li>
+<li><p>Entregar un notebook con el código y una explicación de su funcionamiento. Explicar los resultados de los modelos e incluir una sección de conclusiones con los puntos más importantes.</p></li>
+</ol>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

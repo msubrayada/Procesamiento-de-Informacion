@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "unidad 5/tareas/01-clasificacion.html",
+    "href": "unidad 5/tareas/01-clasificacion.html",
+    "title": "Práctica 5A. Clasificación de texto",
+    "section": "",
+    "text": "Entrena un modelo para predecir el emoticón que corresponde al texto. Los textos están en un archivo .csv con el texto y la clase. Algunos ejemplos son:\n\n(“Mi mamá si jala a fumar porro conmigo, pero no tenemos. _EMO”,😭)\n(¡Esperen! No me eliminen 🤗 Puedo explicarlo todo. _EMO️ _URL,❤)\n(Hacia tiempo que no hablaba tan bonito con Alejandra_EMO,🥺)\n\n\nDebe preprocesar los datos, convertirlos a vectores, entrenar un modelo y evaluar su desempeño. Hay un archivo para entrenamiento y otro para prueba. Los archivos son:\n\n\nemojis_train.csv\nemojis_test.csv\n\nLas clases son [‘❤’, ‘😊’, ‘😭’, ‘🥺’] que indican la emoción del tweet. Una vez entrenado cada modelo, predecir los datos para el conjunto prueba que se proporciona.\n\nEntrega un notebook que contenga el código de la creación de los modelos, así como la evaluación de sus mejores modelos. La evaluación debe incluir\n\nMostrar la matriz de confusión.\nCalcular la precisión, recall, F-score para macro y micro\nComparar los resultados de cada configuración.\n\n\nSe sugiere usar las métricas de sklearn\nfrom sklearn.metrics import classification_report\nprint(classification_report(y_gold, y_predict))\nConsultar esta página\n\nPara obtener la matriz de confusión podemos usar la función de sklearn. Las columnas y filas están asociadas a las etiquetas que se indican y es una matriz de NxN, en el ejemplo son 4 clases.\n\nfrom sklearn.metrics import ConfusionMatrixDisplay\n_ = ConfusionMatrixDisplay.from_predictions(y_test, svc_predict)\nque da como salida:\n\n\n\nimage.png\n\n\n\nProbar diferentes combinaciones de pre procesamiento, vectorización y modelos de aprendizaje para construir el mejor modelo de predicción.\nEntregar un notebook con el código y una explicación de su funcionamiento. Explicar los resultados de los modelos e incluir una sección de conclusiones con los puntos más importantes."
+  },
+  {
     "objectID": "unidad 5/Ejemplo clasificacion.html",
     "href": "unidad 5/Ejemplo clasificacion.html",
     "title": "Ejemplo de clasificación",
@@ -25,7 +32,7 @@
     "href": "unidad 4/index.html",
     "title": "Unidad 4",
     "section": "",
-    "text": "Contenido\nMaterial\nEjemplo de modelos de lenguaje\n\n\nActividades\nActividad 4A\nActividad 4B\n\n\nArchivos\narchivo_emojis_Elfinanciero.csv\nsource-documents.zip\nsuspicious-documents.zip"
+    "text": "Contenido\nMaterial\nVideo de ejemplo del uso de modelos de lenguaje\nEjemplo de modelos de lenguaje\n\n\nActividades\nActividad 4A\nActividad 4B\n\n\nArchivos\narchivo_emojis_Elfinanciero.csv\nsource-documents.zip\nsuspicious-documents.zip"
   },
   {
     "objectID": "unidad 3/tareas/Practica 3A.html",
@@ -172,7 +179,7 @@
     "href": "unidad 1/index.html",
     "title": "Unidad 1",
     "section": "",
-    "text": "Contenido\nMaterial\nEjemplo\n\n\nActividades\nActividad 1A\nActividad 1B\nActividad 1C\nActividad 1D\n\n\nArchivos\ntext_1.txt\ntext_2.txt\ntext_3.txt\ntext_4.txt\ntext_5.txt\nlibro_1.txt\nlibro_2.txt"
+    "text": "Contenido\nMaterial\nVideo introductorio de Colab\nVideo de ejemplos básicos\nNotebook de ejemplos básicos\n\n\nActividades\nActividad 1A\nActividad 1B\nActividad 1C\nActividad 1D\n\n\nArchivos\ntext_1.txt\ntext_2.txt\ntext_3.txt\ntext_4.txt\ntext_5.txt\nlibro_1.txt\nlibro_2.txt"
   },
   {
     "objectID": "unidad 1/01-teoria de la informacion.html",
@@ -480,7 +487,7 @@
     "href": "unidad 3/index.html",
     "title": "Unidad 3",
     "section": "",
-    "text": "Contenido\nMaterial\nEjemplo de modelo CLIP\n\n\nActividades\nActividad 3A\n\n\nArchivos\ndatos-3A.zip"
+    "text": "Contenido\nMaterial\nVideo de uso del modelo CLIP\nEjemplo de modelo CLIP\n\n\nActividades\nActividad 3A\n\n\nArchivos\ndatos-3A.zip"
   },
   {
     "objectID": "unidad 4/01-encajes-vectoriales.html",
@@ -571,6 +578,6 @@
     "href": "unidad 5/index.html",
     "title": "Unidad 5",
     "section": "",
-    "text": "Contenido\nMaterial\nEjemplo de clasificación\n\n\nActividades\nActividad 5A\n\n\nArchivos\nemojis_train.csv\nemojis_test.csv"
+    "text": "Contenido\nMaterial\nVideo de ejemplo de clasificación de texto\nEjemplo de clasificación\n\n\nActividades\nActividad 5A\n\n\nArchivos\nemojis_train.csv\nemojis_test.csv"
   }
 ]
