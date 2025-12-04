@@ -2,4 +2,21 @@
 title: "Manejo y Procesamiento de la Información"
 ---
 
-Este es el sitio de la materia de Manejo y procesamiento de la información.
+En este curso se verán diferentes técnicas de representación de datos para su procesamiento automático. Consta de 5 unidades que son:
+
+1. Teoría de la información
+2. Preprocesado de datos
+3. Modelos de deep learning
+4. Obtención de encajes vectoriales
+5. Clasificación y medición del desempeño.
+
+
+## Entrega de tareas.
+
+
+La mayoría de las tareas se evaluarán mediante un cuestionario en el Aula Virtual. Deberán crear un notebook con todos los elementos solicitados, después podrán hacer la evaluación usando los resultados de ese notebook. Las evaluaciones tienen una fecha límite y no se podrán realizar pasada esa fecha. 
+
+Para la tarea 5A se deberá hacer un notebook incluyendo todos los elementos solicitados. Además del código se deberá incluir texto donde se explique su propósito. La tarea se deberá hacer en un notebook de jupyter y convertida a PDF mediante la herramienta [quarto](https://quarto.org/). Al instalarla se pueden convertir sus notebooks mediate la instrucción
+
+`quarto render <archivo.ipynb> --to pdf`
+

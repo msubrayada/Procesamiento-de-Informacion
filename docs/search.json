@@ -270,7 +270,14 @@
     "href": "index.html",
     "title": "Manejo y Procesamiento de la Información",
     "section": "",
-    "text": "Este es el sitio de la materia de Manejo y procesamiento de la información."
+    "text": "En este curso se verán diferentes técnicas de representación de datos para su procesamiento automático. Consta de 5 unidades que son:"
+  },
+  {
+    "objectID": "index.html#entrega-de-tareas.",
+    "href": "index.html#entrega-de-tareas.",
+    "title": "Manejo y Procesamiento de la Información",
+    "section": "Entrega de tareas.",
+    "text": "Entrega de tareas.\nLa mayoría de las tareas se evaluarán mediante un cuestionario en el Aula Virtual. Deberán crear un notebook con todos los elementos solicitados, después podrán hacer la evaluación usando los resultados de ese notebook. Las evaluaciones tienen una fecha límite y no se podrán realizar pasada esa fecha.\nPara la tarea 5A se deberá hacer un notebook incluyendo todos los elementos solicitados. Además del código se deberá incluir texto donde se explique su propósito. La tarea se deberá hacer en un notebook de jupyter y convertida a PDF mediante la herramienta quarto. Al instalarla se pueden convertir sus notebooks mediate la instrucción\nquarto render &lt;archivo.ipynb&gt; --to pdf"
   },
   {
     "objectID": "old/unidad 6/create_emojis_dataset.html",
